@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Search Generator</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            grid-gap: 5px;
+        }
+        .cell {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Search Generator</h1>
+    <label for="grid-size">Grid Size: </label>
+    <input type="number" id="grid-size" value="10" min="5" max="15">
+    <br>
+    <label for="words">Enter words (comma separated): </label>
+    <input type="text" id="words" value="apple,banana,orange,grape">
+    <br>
+    <button onclick="generateWordSearch()">Generate Word Search</button>
+
+    <div id="word-search" class="grid"></div>
+
+    <script>
+        function generateWordSearch() {
+            const gridSize = parseInt(document.getElementById('grid-size').value);
+            const words = document.getElementById('words').value.split(',');
+            const grid = Array(gridSize).fill().map(() => Array(gridSize).fill(' '));
+
+            function placeWord(word) {
+                const wordLength = word.length;
+                let placed = false;
+
+                while (!placed) {
+                    const direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+                    let row, col;
+
+                    if (direction === 'horizontal') {
+                        row = Math.floor(Math.random() * gridSize);
+                        col = Math.floor(Math.random() * (gridSize - wordLength));
+                        if (grid[row].slice(col, col + wordLength).every(cell => cell === ' ')) {
+                            for (let i = 0; i < wordLength; i++) {
+                                grid[row][col + i] = word[i];
+                            }
+                            placed = true;
+                        }
+                    } else {  // vertical
+                        row = Math.floor(Math.random() * (gridSize - wordLength));
+                        col = Math.floor(Math.random() * gridSize);
+                        if (grid.slice(row, row + wordLength).every(row => row[col] === ' ')) {
+                            for (let i = 0; i < wordLength; i++) {
+                                grid[row + i][col] = word[i];
+                            }
+                            placed = true;
+                        }
+                    }
+                }
+            }
+
+            // Place each word in the grid
+            words.forEach(word => placeWord(word.toLowerCase()));
+
+            // Fill empty spaces with random letters
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    if (grid[row][col] === ' ') {
+                        grid[row][col] = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+                    }
+                }
+            }
+
+            // Render the grid
+            const gridElement = document.getElementById('word-search');
+            gridElement.innerHTML = '';
+            grid.forEach(row => {
+                row.forEach(cell => {
+                    const div = document.createElement('div');
+                    div.classList.add('cell');
+                    div.textContent = cell.toUpperCase();
+                    gridElement.appendChild(div);
+                });
+            });
+        }
+
+        // Initialize with default grid and words
+        generateWordSearch();
+    </script>
+</body>
+</html>
