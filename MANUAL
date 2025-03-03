@@ -5,4 +5,75 @@ NO DATA is here at this moment. However, that will eventually change.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 for COBOL
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-For using COBOL,
+How to use COBOL:
+
+You'll need a COBOL compiler to convert your COBOL code into executable machine code. Some options for COBOL compilers are:
+
+GnuCOBOL (Free and open-source, supports multiple platforms)
+Micro Focus COBOL (Commercial but widely used in the industry)
+IBM COBOL (For mainframes)
+OpenCOBOL (Another free, open-source COBOL implementation)
+2. Writing COBOL Code
+COBOL code can be written in any text editor (Notepad, VSCode, etc.), but it’s best to use an Integrated Development Environment (IDE) designed for COBOL, such as:
+
+Visual Studio Code with COBOL extensions
+Eclim (a plugin for Eclipse for COBOL support)
+Cobol-IT Studio
+Here’s a basic COBOL program to give you an idea:
+
+cobol
+Copy
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HelloWorld.
+       AUTHOR. Your Name.
+       DATE-WRITTEN. 2025-03-03.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  WS-NAME        PIC A(10).
+       PROCEDURE DIVISION.
+       DISPLAY "Enter your name: ".
+       ACCEPT WS-NAME.
+       DISPLAY "Hello, " WS-NAME "!".
+       STOP RUN.
+3. Compiling COBOL Code
+After writing the COBOL program, you need to compile it. The command for compiling depends on the compiler you're using. For example:
+
+Using GnuCOBOL (OpenCOBOL): If you’ve installed GnuCOBOL, save your code in a file called helloworld.cob. You can compile it using the command:
+
+nginx
+Copy
+cobc -x helloworld.cob
+This creates an executable file (helloworld) that you can run.
+
+Using Micro Focus COBOL: You would usually use the provided development environment or command-line tools to compile the code, such as:
+
+nginx
+Copy
+cob -x helloworld.cob
+Using IBM COBOL: The process on IBM mainframes is more complex but typically involves using the IEFBR14 or COBOL commands depending on the environment.
+
+4. Running the Program
+After compiling, you can run the generated executable. For example:
+
+On GnuCOBOL:
+bash
+Copy
+./helloworld
+On Micro Focus or other compilers, you might use a similar command, depending on the environment.
+5. Debugging and Testing
+If there are any errors, they’ll be shown after you attempt to compile or run the program. Pay attention to error messages and fix your code accordingly.
+
+6. Example in Practice
+Here’s an example of what the whole process might look like using GnuCOBOL:
+
+Install GnuCOBOL (if you don’t have it installed, you can install it on Linux with the following command):
+
+arduino
+Copy
+sudo apt install open-cobol
+Create a COBOL Program: Save the following code into a file named hello.cob:
+
+cobol
+Copy
+
