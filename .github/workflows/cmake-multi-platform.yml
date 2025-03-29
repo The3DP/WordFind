@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Configure CMake
-      run: cmake -B build -S . # Ensure this path is correct
+      run: cmake -B build -S src  # Update the source directory here
       env:
         CXX: g++
         CC: gcc
