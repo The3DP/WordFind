@@ -1,1 +1,10 @@
+cmake_minimum_required(VERSION 3.10)
 
+# Set the project name
+project(WordFind)
+
+# Add the executable
+add_executable(WordFind main.cpp WordFind.cpp utils/Helper.cpp)
+
+# Include directories
+target_include_directories(WordFind PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
