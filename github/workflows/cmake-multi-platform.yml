@@ -1,0 +1,20 @@
+name: CMake on multiple platforms
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Configure CMake
+      run: cmake -B build -S src  # Updated the source directory to 'src'
+      env:
+        CXX: g++
+        CC: gcc
+
+    - name: Build
+      run: cmake --build build
