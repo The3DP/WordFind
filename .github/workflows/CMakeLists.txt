@@ -4,17 +4,12 @@ on: [push, pull_request]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
+    - uses: actions/checkout@v2
     - name: Configure CMake
-      run: cmake -B build -S . # Ensure this path is correct
-      env:
-        CXX: g++
-        CC: gcc
-
+      run: cmake -S . -B build
     - name: Build
       run: cmake --build build
