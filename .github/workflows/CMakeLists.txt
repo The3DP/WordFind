@@ -1,15 +1,7 @@
-name: CMake on multiple platforms
+cmake_minimum_required(VERSION 3.10)
 
-on: [push, pull_request]
+# Set the project name
+project(WordFind)
 
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Configure CMake
-      run: cmake -S . -B build
-    - name: Build
-      run: cmake --build build
+# Add the executable
+add_executable(WordFind main.cpp)
