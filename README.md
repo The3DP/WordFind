@@ -3,17 +3,17 @@ A Multi code platform word search game.
 ##
 WordFind is indeed, a full-on multi platform WordSerh game 
 ##
-HTML
+>HTML
 
-COBOL
+>COBOL
 
-TypeScript
+>TypeScript
 
-Perl
+>Perl
 
-Shell
+>Shell
 
-Dart
+>Dart
 ##
 Thank you for understanding the rules and regulations in LICENSE.
 For questions on this repository related to the "Creative Commons Legal Code
